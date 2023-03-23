@@ -8,7 +8,7 @@ services:
             - AUTOHEAL_CONTAINER_LABEL=all
         volumes:
             - /var/run/docker.sock:/var/run/docker.sock
-    virtuoso:
+    virtuoso3:
         image: tenforce/virtuoso:virtuoso7.2.5
         volumes:
             - type: volume
@@ -22,7 +22,7 @@ services:
     synbiohubbackend:
         image: synbiohub/sbh3backend:snapshot
         depends_on: 
-            virtuoso:
+            virtuoso3:
                 condition: service_started
         ports:
             - "6789:6789"
@@ -42,7 +42,7 @@ services:
         dns: 8.8.8.8
         restart: always
         environment: 
-            - backend=http://synbiohubbackend:6789
+            - backend=http://localhost:6789
 
 volumes:
     virtuoso-db:
