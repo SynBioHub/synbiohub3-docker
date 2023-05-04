@@ -43,6 +43,7 @@ services:
         restart: always
         environment: 
             - backend=http://localhost:6789
+            - backendSS=http://synbiohubbackend:6789
 
 volumes:
     virtuoso-db:
